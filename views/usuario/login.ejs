@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "/css/bootstrap.min.css">
+</head>
+<body>
+    <% if(erro!=undefined){ %>
+        <div style="color : red">
+            E-mail e/ou senha inválido(s)!
+        </div>
+    
+    <% } %>
+    <form action = "/usuarios/login" method = "post">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" required class="form-control" name ="email">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input type="password" required class="form-control" name ="senha">
+      </div>
+    
+
+    <button class="btn btn-success" type = "submit" >Logar</button>
+
+</form>
+<%- include("../partials/rodape.ejs") %>
+<div>
+  <a href = "/usuarios/cadastrar">Cadastrar</a>
+  
+</div>
+</body>
+</html>

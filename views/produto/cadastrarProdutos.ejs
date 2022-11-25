@@ -1,0 +1,39 @@
+<!-- cadastrar.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+    <div class = "container">
+   
+<form action ="/produtos" method = "post">
+  
+  <input type="hidden" name="id" value = "<%= p.id %>">
+  <div <%= escondido %> class="mb-3">
+      <label class="form-label">Código de barras</label>
+      <input type="text" value = "<%= p.codBarras %>" required class="form-control" name ="codBarras">
+    </div>
+ 
+      <div class="mb-3">
+        <label class="form-label">Tipo</label>
+        <input type="text" value = "<%= p.tipo %>" class="form-control" name ="tipo">
+      </div>
+ 
+      <div class="mb-3">
+        <label class="form-label">Preço</label>
+        <input type="text" value = "<%= p.preco %>" class="form-control" name ="preco">
+      </div>
+   
+    <button class="btn btn-success" type = "submit" >Salvar</button>
+ 
+</form>
+<a href="/">Voltar</a>
+<%- include("../partials/rodape.ejs") %>
+</div>
+</body>
+</html>

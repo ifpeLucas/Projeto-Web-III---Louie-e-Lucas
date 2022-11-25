@@ -1,0 +1,51 @@
+<!-- pessoas.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de clientes</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+    <% if(salvo==1){ %>
+        <div style="color : red">
+            Cliente cadastrado com sucesso!
+        </div>
+    
+    <% } %>
+    <% if(salvo==3){ %>
+        <div style="color : green">
+            Cliente atualizado com sucesso!
+        </div>
+    
+    <% } %>
+    <% if(removido != undefined){ %>
+        <div style="color : red">
+            Cliente removido com sucesso!
+        </div>
+        
+    <% } %>
+   <div class ="container">
+   <h1>Lista de clientes</h1>
+    <% for (let i=0; i<lista.length; i++) {  %>
+ 
+         <div> <b>CPF: </b><%= lista[i].cpf %> </div>
+         <div><b>Nome: </b><%=lista[i].nome %> </div>
+         <div><b>Idade: </b><%= lista[i].idade %> </div>
+          <div>
+            <a href="/clientes/<%= lista[i].cpf %>" class="btn btn-secondary">Detalhes</a>
+            <a href="/clientes/remover/<%= lista[i].cpf%>" class="btn btn-danger" onclick= "return confirm('Deseja realmente remover?')">Remover</a>
+            <a href = "/clientes/cadastrar/<%= lista[i].cpf%>" class = "btn btn-warning">Atualizar</a>
+    </div>
+         <hr>
+ 
+   <% } %>
+    <div>
+        <a href="/">Voltar</a>
+    </div>
+    <%- include("../partials/rodape.ejs") %>
+</div>
+</body>
+</html>

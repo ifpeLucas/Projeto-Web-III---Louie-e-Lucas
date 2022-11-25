@@ -1,0 +1,51 @@
+<!-- listarProdutos.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de clientes</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+    <% if(salvo==1){ %>
+        <div style="color : red">
+            Produto cadastrado com sucesso!
+        </div>
+    
+    <% } %>
+    <% if(salvo==3){ %>
+        <div style="color : green">
+            Produto atualizado com sucesso!
+        </div>
+    
+    <% } %>
+    <% if(removido != undefined){ %>
+        <div style="color : red">
+            Produto removido com sucesso!
+        </div>
+        
+    <% } %>
+   <div class ="container">
+   <h1>Lista de Produtos</h1>
+    <% for (let i=0; i<listaProd.length; i++) {  %>
+ 
+         <div> <b>Código de barras: </b><%= listaProd[i].codBarras %> </div>
+         <div><b>Tipo: </b><%=listaProd[i].tipo %> </div>
+         <div><b>Preço: </b><%= listaProd[i].preco %> </div>
+          <div>
+            <a href="/produtos/<%= listaProd[i].codBarras %>" class="btn btn-secondary">Detalhes</a>
+            <a href="/produtos/remover/<%= listaProd[i].codBarras%>" class="btn btn-danger" onclick= "return confirm('Deseja realmente remover?')">Remover</a>
+            <a href = "/produtos/cadastrar/<%= listaProd[i].codBarras%>" class = "btn btn-warning">Atualizar</a>
+    </div>
+         <hr>
+ 
+   <% } %>
+    <div>
+        <a href="/">Voltar</a>
+    </div>
+    <%- include("../partials/rodape.ejs") %>
+</div>
+</body>
+</html>
